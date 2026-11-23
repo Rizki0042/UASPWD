@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perhitungan Biaya Sewa Mobil</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            font-size: 26px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 0;
+            border-radius: 5px;
+            background: #0d6efd;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0b5ed7;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #333;
+            line-height: 1.8;
+        }
+
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .discount {
+            color: #b00020;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Perhitungan Biaya Sewa Mobil</h1>
+
+        <form id="rentalForm">
+            <div class="form-group">
+                <label for="tarif">Tarif Sewa per Hari (Rp)</label>
+                <input type="number" id="tarif" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hari">Jumlah Hari Sewa</label>
+                <input type="number" id="hari" min="1" required>
+            </div>
+
+            <button type="submit">Hitung Total</button>
+        </form>
+
+        <div class="result" id="result">
+            <div>Total Biaya Sewa: <span id="totalAwal">Rp 0</span></div>
+            <div>
+                Potongan Diskon (<span id="persenDiskon">0</span>%):
+                <span id="nilaiDiskon" class="discount">Rp 0</span>
+            </div>
+            <div class="total">
+                Total Bayar: <span id="totalBayar">Rp 0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("rentalForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const tarif = Number(document.getElementById("tarif").value);
+            const hari = Number(document.getElementById("hari").value);
+
+            const totalAwal = tarif * hari;
+
+            let persenDiskon = 0;
+
+            if (totalAwal > 3000000) {
+                persenDiskon = 10;
+            } else if (totalAwal >= 1500000 && totalAwal <= 3000000) {
+                persenDiskon = 5;
+            }
+
+            const nilaiDiskon = totalAwal * persenDiskon / 100;
+            const totalBayar = totalAwal - nilaiDiskon;
+
+            const rupiah = new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+                minimumFractionDigits: 0
+            });
+
+            document.getElementById("totalAwal").textContent = rupiah.format(totalAwal);
+            document.getElementById("persenDiskon").textContent = persenDiskon;
+            document.getElementById("nilaiDiskon").textContent = rupiah.format(nilaiDiskon);
+            document.getElementById("totalBayar").textContent = rupiah.format(totalBayar);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Tiket Pertandingan</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 12px;
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #999;
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin-right: 10px;
+      }
+
+      .header-text {
+        text-align: center;
+      }
+
+      .header-text h1 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: normal;
+      }
+
+      .header-text p {
+        margin: 12px 0 0;
+        font-size: 10px;
+        font-style: italic;
+      }
+
+      .form-container {
+        width: 300px;
+        margin: 12px auto 0;
+      }
+
+      .form-container h2 {
+        text-align: center;
+        font-size: 14px;
+        margin: 0 0 12px;
+      }
+
+      .form-container h3 {
+        text-align: center;
+        font-size: 13px;
+        margin: 0 0 20px;
+      }
+
+      .form-row {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 7px;
+      }
+
+      .form-row > label {
+        width: 75px;
+        font-size: 11px;
+      }
+
+      .form-row .colon {
+        width: 15px;
+      }
+
+      .form-row input[type="text"],
+      .form-row input[type="number"],
+      .form-row select,
+      .form-row textarea {
+        width: 145px;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 10px;
+        border: 1px solid #aaa;
+      }
+
+      .form-row input[type="text"],
+      .form-row input[type="number"],
+      .form-row select {
+        height: 20px;
+      }
+
+      .form-row textarea {
+        height: 55px;
+        resize: both;
+      }
+
+      .radio-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 10px;
+      }
+
+      .radio-group label {
+        width: auto;
+        font-size: 10px;
+        white-space: nowrap;
+      }
+
+      .radio-group input {
+        margin: 0 3px 0 0;
+        vertical-align: middle;
+      }
+
+      .buttons {
+        margin-left: 90px;
+        margin-top: 3px;
+      }
+
+      .buttons input {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 10px;
+        padding: 1px 5px;
+      }
+
+      .table-container {
+        width: 500px;
+        margin: 8px auto 0;
+      }
+
+      .table-title {
+        text-align: center;
+        background-color: #00a9e8;
+        color: black;
+        border: 1px solid #777;
+        font-size: 11px;
+        padding: 2px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10px;
+      }
+
+      th {
+        background-color: #009fe3;
+        color: black;
+        border: 1px solid #777;
+        padding: 3px;
+        font-weight: normal;
+      }
+
+      td {
+        border: 1px solid #777;
+        padding: 3px;
+        height: 28px;
+      }
+
+      th:nth-child(1) {
+        width: 18%;
+      }
+
+      th:nth-child(2) {
+        width: 25%;
+      }
+
+      th:nth-child(3) {
+        width: 17%;
+      }
+
+      th:nth-child(4) {
+        width: 18%;
+      }
+
+      th:nth-child(5) {
+        width: 22%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header-container">
+      <img
+        src="logo-unindra.png"
+        alt="Logo Universitas Indraprasta PGRI"
+        class="logo"
+      />
+      <div class="header-text">
+        <h1>PERTANDINGAN ANTAR KAMPUS</h1>
+        <p>Jl. Nangka No.58 Tanjung Barat – Jaksel</p>
+      </div>
+    </header>
+
+    <section class="form-container">
+      <h2>FORM TIKET PERTANDINGAN</h2>
+      <h3>PIALA PERGILIR TAHUN 2026</h3>
+      <form>
+        <div class="form-row">
+          <label for="kode">Kode Tiket</label>
+          <span class="colon">:</span>
+          <input type="text" id="kode" name="kode" />
+        </div>
+
+        <div class="form-row">
+          <label for="pertandingan">Pertandingan</label>
+          <span class="colon">:</span>
+
+          <select id="pertandingan" name="pertandingan">
+            <option>KAMPUS A VS KAMPUS B</option>
+            <option>KAMPUS C VS KAMPUS D</option>
+            <option>KAMPUS E VS KAMPUS F</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="tempat">Tempat<br />Pertandingan</label>
+          <span class="colon">:</span>
+
+          <textarea id="tempat" name="tempat"></textarea>
+        </div>
+
+        <div class="form-row">
+          <label>Jenis Tiket</label>
+          <span class="colon">:</span>
+
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="jenis" value="Tribune" />
+              Tribune
+            </label>
+
+            <label>
+              <input type="radio" name="jenis" value="VIP" />
+              VIP
+            </label>
+
+            <label>
+              <input type="radio" name="jenis" value="VVIP" />
+              VVIP
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="telp">TELP</label>
+          <span class="colon">:</span>
+          <input type="text" id="telp" name="telp" />
+        </div>
+
+        <div class="buttons">
+          <input type="submit" value="Submit" />
+          <input type="reset" value="Batal" />
+        </div>
+      </form>
+    </section>
+
+    <section class="table-container">
+      <div class="table-title">Jadwal Pertandingan</div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Kode Tiket</th>
+            <th>Pertandingan</th>
+            <th>Tempat</th>
+            <th>Jenis Tiket</th>
+            <th>TELP</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>65465</td>
+            <td>Kampus A Vs<br />Kampus B</td>
+            <td>JL. SATU</td>
+            <td>VIP</td>
+            <td>085464654675</td>
+          </tr>
+
+          <tr>
+            <td>4435</td>
+            <td>Kampus C Vs<br />Kampus D</td>
+            <td>JL.DUA</td>
+            <td>TRIBUNE</td>
+            <td>0854433534545</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>
